@@ -4,7 +4,7 @@
 ____________________________________________________________________________________________________
 
 AUTHOR:     DrPython3 @ GitHub.com
-RELEASE     1
+RELEASE     2
 DATE:       2021 / 02 / 28
 
 INFO:       A basic tool for multi threaded port scanning. It scans an IP or IP range for most
@@ -120,6 +120,12 @@ def writer(filename, content):
     '''
     try:
         with open(str(filename), 'a+') as output_file:
+            output_file.seek(0)
+            empty = output_file.read(100)
+            if len(empty) > 0:
+                output_file.write('\n')
+            else:
+                pass
             output_file.write(str(content))
         return True
     except:
